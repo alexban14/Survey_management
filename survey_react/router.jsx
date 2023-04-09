@@ -1,19 +1,31 @@
-import { createBrowserRouter } from "react-router-dom";
-import { Dashboard } from "./src/views/Dashborad";
-import { Survey } from "./src/views/Survey";
+import { Navigate, createBrowserRouter } from "react-router-dom";
+import { Dashboard } from "./src/views/Dashboard";
+import { Surveys } from "./src/views/Surveys";
 import { LoginForm } from "./src/views/LoginForm";
 import { SignUp } from "./src/views/SignUp";
 import { GuestLayout } from "./src/components/GuestLayout";
+import DefaultLayout from "./src/components/DefaultLayout";
 
 const routes = [
   {
     path: '/',
-    element: <Dashboard />
+    element: <DefaultLayout />,
+    children: [
+      {
+        path: '/',
+        element: <Navigate to='/dashboard'/>
+      },
+      {
+        path: '/dashboard',
+        element: <Dashboard />
+      },
+      {
+        path: '/surveys',
+        element: <Surveys />
+      },
+    ]
   },
-  {
-    path: '/survey',
-    element: <Survey />
-  },
+
   {
     path: '/auth',
     element: <GuestLayout />,
