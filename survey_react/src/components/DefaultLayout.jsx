@@ -17,13 +17,13 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const logout = (e) => {
-  e.preventDefault();
-  console.log("Logged out");
-}
-
 export default function DefaultLayout() {
   const { currentUser } = useStateContext();
+
+  const logout = (e) => {
+    e.preventDefault();
+    console.log("Logged out");
+  }
 
   return (
     <>
@@ -67,7 +67,7 @@ export default function DefaultLayout() {
                         <div>
                           <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span className="sr-only">Open user menu</span>
-                            <UserIcon className='w-8' />
+                            <UserIcon className='w-8 h-6 bg-black/25 p-2 rounded-full text-white' />
                           </Menu.Button>
                         </div>
                         <Transition
@@ -126,7 +126,7 @@ export default function DefaultLayout() {
                 <div className="border-t border-gray-700 pb-3 pt-4">
                   <div className="flex items-center px-5">
                     <div className="flex-shrink-0">
-                      <UserIcon className='w-8' />
+                      <UserIcon className='w-8 h-6 bg-black/25 p-2 rounded-full text-white' />
                     </div>
                     <div className="ml-3">
                       <div className="text-base font-medium leading-none text-white">{currentUser.name}</div>
